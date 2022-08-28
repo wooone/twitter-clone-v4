@@ -12,19 +12,19 @@ export default function Sidebar() {
 			</div>
 			{/* Menu */}
 			<div className="mt-4 mb-2.5 xl:items-start">
-				<SidebarMenuItem text="Home" Icon={HomeIcon} active />
-				<SidebarMenuItem text="Explore" Icon={HashtagIcon} />
-				<SidebarMenuItem text="Notifications" Icon={BellIcon} />
-				<SidebarMenuItem text="Messages" Icon={InboxIcon} />
-				<SidebarMenuItem text="Bookmark" Icon={BookmarkIcon} />
-				<SidebarMenuItem text="Lists" Icon={ClipboardIcon} />
-				<SidebarMenuItem text="Profile" Icon={UserIcon} />
-				<SidebarMenuItem text="More" Icon={DotsCircleHorizontalIcon} />
+				<SidebarMenuItem text="首頁" Icon={HomeIcon} active />
+				<SidebarMenuItem text="探索" Icon={HashtagIcon} />
+				<SidebarMenuItem text="通知" Icon={BellIcon} />
+				<SidebarMenuItem text="訊息" Icon={InboxIcon} />
+				<SidebarMenuItem text="書籤" Icon={BookmarkIcon} />
+				<SidebarMenuItem text="列表" Icon={ClipboardIcon} />
+				<SidebarMenuItem text="個人資料" Icon={UserIcon} />
+				<SidebarMenuItem text="更多" Icon={DotsCircleHorizontalIcon} />
 			</div>
 
 			{/* Button */}
 
-			<button className="bg-blue-400 text-white rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 text-lg hidden xl:inline">Tweet</button>
+			<button className="bg-sky-500 text-white rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 text-lg hidden xl:inline">推文</button>
 
 			{/* Mini-Profile */}
 
