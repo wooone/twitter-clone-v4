@@ -1,6 +1,6 @@
 import { getProviders, signIn } from "next-auth/react";
 
-export default function Siginin({ providers }) {
+export default function Signin({ providers }) {
   return (
     <div className="flex justify-center mt-20 space-x-4">
       <img
