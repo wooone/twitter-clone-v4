@@ -455,10 +455,10 @@
   "resolved" "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   "version" "1.2.1"
 
-"@next/env@12.2.3":
-  "integrity" "sha512-2lWKP5Xcvnor70NaaROZXBvU8z9mFReePCG8NhZw6NyNGnPvC+8s+Cre/63LAB1LKzWw/e9bZJnQUg0gYFRb2Q=="
-  "resolved" "https://registry.npmjs.org/@next/env/-/env-12.2.3.tgz"
-  "version" "12.2.3"
+"@next/env@12.2.6-canary.6":
+  "integrity" "sha512-xS6LwJdegb5H6McfUtp+B+RoxjGT1sTTqyL8nrbytvtBb/sFKvVr1MUWc0HaVqM/+P7f3SUbNDuAKPq5o9dy5Q=="
+  "resolved" "https://registry.npmjs.org/@next/env/-/env-12.2.6-canary.6.tgz"
+  "version" "12.2.6-canary.6"
 
 "@next/eslint-plugin-next@12.2.3":
   "integrity" "sha512-B2e8Yg1MpuLsGxhCx4rU8/Tcnr5wFmCx1O2eyLXBPnaCcsFXfGCo067ujagtDLtWASL3GNgzg78U1SB0dbc38A=="
@@ -467,10 +467,10 @@
   dependencies:
     "glob" "7.1.7"
 
-"@next/swc-darwin-x64@12.2.3":
-  "integrity" "sha512-lve+lnTiddXbcT3Lh2ujOFywQSEycTYQhuf6j6JrPu9oLQGS01kjIqqSj3/KMmSoppEnXo3BxkgYu+g2+ecHkA=="
-  "resolved" "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-12.2.3.tgz"
-  "version" "12.2.3"
+"@next/swc-darwin-x64@12.2.6-canary.6":
+  "integrity" "sha512-eXXqGaAQdaYce45z6YHEqeDfs4MDw2cCWauSDBb1G5DFeobenIe539O9EtMPwVM2qCsXpMbfHnkEptu7G2x8BA=="
+  "resolved" "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-12.2.6-canary.6.tgz"
+  "version" "12.2.6-canary.6"
 
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="
@@ -1903,31 +1903,31 @@
     "preact-render-to-string" "^5.1.19"
     "uuid" "^8.3.2"
 
-"next@12.2.3":
-  "integrity" "sha512-TA0tmSA6Dk6S6kfvCNbF7CWYW8468gZUxr/3/30z4KvAQbXnl2ASYZElVe7q/hBW/1F1ee0tSBlHa4/sn+ZIBw=="
-  "resolved" "https://registry.npmjs.org/next/-/next-12.2.3.tgz"
-  "version" "12.2.3"
+"next@^12.2.6-canary.6":
+  "integrity" "sha512-Z4XqwLh7yKmcIMFDyEVQlFLIe6bhgv8LyaqQ2ueycslgxnum4jt7YKuLDTqN1jce9qX70bEHrjwj5AhU1L1+0Q=="
+  "resolved" "https://registry.npmjs.org/next/-/next-12.2.6-canary.6.tgz"
+  "version" "12.2.6-canary.6"
   dependencies:
-    "@next/env" "12.2.3"
+    "@next/env" "12.2.6-canary.6"
     "@swc/helpers" "0.4.3"
     "caniuse-lite" "^1.0.30001332"
     "postcss" "8.4.14"
-    "styled-jsx" "5.0.2"
+    "styled-jsx" "5.0.4"
     "use-sync-external-store" "1.2.0"
   optionalDependencies:
-    "@next/swc-android-arm-eabi" "12.2.3"
-    "@next/swc-android-arm64" "12.2.3"
-    "@next/swc-darwin-arm64" "12.2.3"
-    "@next/swc-darwin-x64" "12.2.3"
-    "@next/swc-freebsd-x64" "12.2.3"
-    "@next/swc-linux-arm-gnueabihf" "12.2.3"
-    "@next/swc-linux-arm64-gnu" "12.2.3"
-    "@next/swc-linux-arm64-musl" "12.2.3"
-    "@next/swc-linux-x64-gnu" "12.2.3"
-    "@next/swc-linux-x64-musl" "12.2.3"
-    "@next/swc-win32-arm64-msvc" "12.2.3"
-    "@next/swc-win32-ia32-msvc" "12.2.3"
-    "@next/swc-win32-x64-msvc" "12.2.3"
+    "@next/swc-android-arm-eabi" "12.2.6-canary.6"
+    "@next/swc-android-arm64" "12.2.6-canary.6"
+    "@next/swc-darwin-arm64" "12.2.6-canary.6"
+    "@next/swc-darwin-x64" "12.2.6-canary.6"
+    "@next/swc-freebsd-x64" "12.2.6-canary.6"
+    "@next/swc-linux-arm-gnueabihf" "12.2.6-canary.6"
+    "@next/swc-linux-arm64-gnu" "12.2.6-canary.6"
+    "@next/swc-linux-arm64-musl" "12.2.6-canary.6"
+    "@next/swc-linux-x64-gnu" "12.2.6-canary.6"
+    "@next/swc-linux-x64-musl" "12.2.6-canary.6"
+    "@next/swc-win32-arm64-msvc" "12.2.6-canary.6"
+    "@next/swc-win32-ia32-msvc" "12.2.6-canary.6"
+    "@next/swc-win32-x64-msvc" "12.2.6-canary.6"
 
 "node-fetch@2.6.7":
   "integrity" "sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ=="
@@ -2519,10 +2519,10 @@
   "resolved" "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz"
   "version" "3.1.1"
 
-"styled-jsx@5.0.2":
-  "integrity" "sha512-LqPQrbBh3egD57NBcHET4qcgshPks+yblyhPlH2GY8oaDgKs8SK4C3dBh3oSJjgzJ3G5t1SYEZGHkP+QEpX9EQ=="
-  "resolved" "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.0.2.tgz"
-  "version" "5.0.2"
+"styled-jsx@5.0.4":
+  "integrity" "sha512-sDFWLbg4zR+UkNzfk5lPilyIgtpddfxXEULxhujorr5jtePTUqiPDc5BC0v1NRqTr/WaFBGQQUoYToGlF4B2KQ=="
+  "resolved" "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.0.4.tgz"
+  "version" "5.0.4"
 
 "supports-color@^7.1.0":
   "integrity" "sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw=="
