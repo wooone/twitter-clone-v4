@@ -38,7 +38,7 @@ export default function Widgets({ newsResults, randomUsersResults }) {
               <h4 className="font-bold hover:underline text-[14px] truncate">{randomUser.login.username}</h4>
               <h5 className="text-[13px] text-gray-500 truncate">{randomUser.name.first + " " + randomUser.name.last}</h5>
             </div>
-            <button className="ml-auto bg-black text-white rounded-full text-sm px-3.5 py-1.5 font-bold">跟隨</button>
+            <button className="ml-auto bg-black text-white rounded-full text-sm px-3.5 py-1.5 font-bold whitespace-nowrap">跟隨</button>
           </div>
         ))}
         <button onClick={()=>setRandomUserNum(randomUserNum + 3)} className="text-blue-300 pl-4 pb-3 hover:text-blue-400">
