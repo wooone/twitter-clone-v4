@@ -22,18 +22,20 @@ import { useEffect, useState } from "react";
 import { deleteObject, ref } from "firebase/storage";
 import { useRecoilState } from "recoil";
 import { modalState, postIdState } from "../atom/modalAtom";
+import { useRouter } from "next/router";
 
-export default function Post({ post }) {
+export default function Post({ post, id }) {
   const { data: session } = useSession();
   const [likes, setLikes] = useState([]);
   const [hasliked, setHasLiked] = useState(false);
   const [open, setOpen] = useRecoilState(modalState);
   const [postId, setPostId] = useRecoilState(postIdState);
   const [comments, setComments] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
-      collection(db, "posts", post.id, "likes"),
+      collection(db, "posts", id, "likes"),
       (snapshot) => setLikes(snapshot.docs)
     );
   }, [db]);
@@ -47,9 +49,9 @@ export default function Post({ post }) {
   async function likePost() {
     if (session) {
       if (hasliked) {
-        await deleteDoc(doc(db, "posts", post.id, "likes", session?.user.uid));
+        await deleteDoc(doc(db, "posts", id, "likes", session?.user.uid));
       } else {
-        await setDoc(doc(db, "posts", post.id, "likes", session?.user.uid), {
+        await setDoc(doc(db, "posts", id, "likes", session?.user.uid), {
           username: session.user.username,
         });
       }
@@ -60,16 +62,17 @@ export default function Post({ post }) {
 
   async function deletePost() {
     if (window.confirm("確定刪除這篇貼文？")) {
-      deleteDoc(doc(db, "posts", post.id));
+      deleteDoc(doc(db, "posts", id));
       if (post.data().image) {
-        deleteObject(ref(storage, `posts/${post.id}/image`));
+        deleteObject(ref(storage, `posts/${id}/image`));
       }
+      router.push("/");
     }
   }
 
   useEffect(() => {
     const comment = onSnapshot(
-      collection(db, "posts", post.id, "comments"),
+      collection(db, "posts", id, "comments"),
       (snapshot) => setComments(snapshot.docs)
     );
   }, [db]);
@@ -79,7 +82,7 @@ export default function Post({ post }) {
       {/* user image */}
       <img
         className="h-11 w-11 rounded-full mr-4"
-        src={post.data().userImg}
+        src={post?.data()?.userImg}
         alt="user-img"
       />
 
@@ -91,14 +94,14 @@ export default function Post({ post }) {
           {/* post user info */}
           <div className="flex items-center space-x-1 whitespace-nowrap">
             <h4 className="font-bold text-[0.9375rem] sm:text-[1rem] hover:underline">
-              {post.data().name}
+              {post?.data()?.name}
             </h4>
             <span className="text-sm sm:text-[0.9375rem] text-gray-700">
-              @{post.data().username} ·{" "}
+              @{post?.data()?.username} ·{" "}
             </span>
             <span className="text0sm sm:text-[0.9375rem] hover:underline text-gray-700">
               <Moment locale="zh-tw" fromNow>
-                {post?.data().timestamp?.toDate()}
+                {post?.data()?.timestamp?.toDate()}
               </Moment>
             </span>
           </div>
@@ -110,14 +113,14 @@ export default function Post({ post }) {
         {/* post text */}
 
         <p className="text-gray=800 text-[0.9375rem] sm:text-[1rem] mb-2">
-          {post?.data().text}
+          {post?.data()?.text}
         </p>
 
         {/* post image */}
         <img
           className="rounded-2xl mr-2"
           src={
-            post?.data().image ||
+            post?.data()?.image ||
             "data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA="
           }
           alt="post-img"
@@ -132,7 +135,7 @@ export default function Post({ post }) {
                 if (!session) {
                   signIn();
                 } else {
-                  setPostId(post.id);
+                  setPostId(id);
                   setOpen(!open);
                 }
               }}
@@ -140,15 +143,11 @@ export default function Post({ post }) {
             />
 
             {comments.length > 0 && (
-              <span
-                className="text-sm select-none"
-              >
-                {comments.length}
-              </span>
+              <span className="text-sm select-none">{comments.length}</span>
             )}
           </div>
 
-          {session?.user.uid === post?.data().id && (
+          {session?.user.uid === post?.data()?.id && (
             <TrashIcon
               onClick={deletePost}
               className="h-9 w-9 hoverEffect p-2 hover:text-red-600 hover:bg-red-100"
