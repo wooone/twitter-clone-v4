@@ -56,7 +56,9 @@ export default function Post({ post }) {
   async function deletePost() {
     if (window.confirm("確定刪除這篇貼文？")) {
       deleteDoc(doc(db, "posts", post.id));
-      deleteObject(ref(storage, `posts/${post.id}` / image));
+      if(post.data().image){
+        deleteObject(ref(storage, `posts/${post.id}` / image));
+      }
     }
   }
 
