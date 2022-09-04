@@ -75,7 +75,7 @@ export default function Post({ post, id }) {
       collection(db, "posts", id, "comments"),
       (snapshot) => setComments(snapshot.docs)
     );
-  }, [db]);
+  }, [db, id]);
 
   return (
     <div className="flex p-3 cursor-pointer border-b border-gray-200">
