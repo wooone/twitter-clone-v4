@@ -29,6 +29,7 @@ export default function Post({ post }) {
   const [hasliked, setHasLiked] = useState(false);
   const [open, setOpen] = useRecoilState(modalState);
   const [postId, setPostId] = useRecoilState(postIdState);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -66,6 +67,13 @@ export default function Post({ post }) {
     }
   }
 
+  useEffect(() => {
+    const comment = onSnapshot(
+      collection(db, "posts", post.id, "comments"),
+      (snapshot) => setComments(snapshot.docs)
+    );
+  }, [db]);
+
   return (
     <div className="flex p-3 cursor-pointer border-b border-gray-200">
       {/* user image */}
@@ -102,31 +110,44 @@ export default function Post({ post }) {
         {/* post text */}
 
         <p className="text-gray=800 text-[0.9375rem] sm:text-[1rem] mb-2">
-          {post.data().text}
+          {post?.data().text}
         </p>
 
         {/* post image */}
-
         <img
           className="rounded-2xl mr-2"
-          src={post.data().image}
+          src={
+            post?.data().image ||
+            "data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA="
+          }
           alt="post-img"
         />
 
         {/* icons */}
 
         <div className="flex justify-between text-gray-500 p-2 ">
-          <ChatIcon
-            onClick={() => {
-              if (!session) {
-                signIn();
-              } else {
-                setPostId(post.id);
-                setOpen(!open);
-              }
-            }}
-            className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100"
-          />
+          <div className="flex items-center select-none">
+            <ChatIcon
+              onClick={() => {
+                if (!session) {
+                  signIn();
+                } else {
+                  setPostId(post.id);
+                  setOpen(!open);
+                }
+              }}
+              className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100"
+            />
+
+            {comments.length > 0 && (
+              <span
+                className="text-sm select-none"
+              >
+                {comments.length}
+              </span>
+            )}
+          </div>
+
           {session?.user.uid === post?.data().id && (
             <TrashIcon
               onClick={deletePost}

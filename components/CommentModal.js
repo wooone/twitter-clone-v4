@@ -1,5 +1,6 @@
 import { useRecoilState } from "recoil";
 import { modalState, postIdState } from "../atom/modalAtom";
+import { useRouter } from "next/router";
 import Modal from "react-modal";
 import {
   EmojiHappyIcon,
@@ -8,7 +9,13 @@ import {
 } from "@heroicons/react/outline";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
-import { doc, onSnapshot } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  onSnapshot,
+  serverTimestamp,
+} from "firebase/firestore";
 import Moment from "react-moment";
 import "moment/locale/zh-tw";
 import { useSession } from "next-auth/react";
@@ -19,6 +26,7 @@ export default function CommentModal() {
   const [post, setPost] = useState({});
   const { data: session } = useSession();
   const [input, setInput] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     onSnapshot(doc(db, "posts", postId), (snapshot) => {
@@ -26,10 +34,19 @@ export default function CommentModal() {
     });
   }, [postId]);
 
-  function sendComment(){
+  async function sendComment() {
+    await addDoc(collection(db, "posts", postId, "comments"), {
+      comment: input,
+      name: session.user.name,
+      username: session.user.username,
+      userImg: session.user.image,
+      timestamp: serverTimestamp(),
+    });
 
+    setOpen(false);
+    setInput("");
+    router.push(`posts/${postId}`);
   }
-
 
   return (
     <div>
@@ -68,7 +85,9 @@ export default function CommentModal() {
                 </Moment>
               </span>
             </div>
-			<p className="text-gray-500 text-[15px] sm:text-[16px] ml-16 mb-2">{post?.data()?.text}</p>
+            <p className="text-gray-500 text-[15px] sm:text-[16px] ml-16 mb-2">
+              {post?.data()?.text}
+            </p>
 
             <div className="flex p-3 space-x-3">
               <img
@@ -90,7 +109,7 @@ export default function CommentModal() {
                   <div className="flex">
                     <div
                       className=""
-                    //   onClick={() => filePickerRef.current.click()}
+                      //   onClick={() => filePickerRef.current.click()}
                     >
                       <PhotographIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
                       {/* <input
