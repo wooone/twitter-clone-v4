@@ -68,7 +68,8 @@ export default function PostPage({ newsResults, randomUsersResults }) {
               {comments.map((comment) => (
                 <Comment
                   key={comment.id}
-                  id={comment.id}
+                  commentId={comment.id}
+                  originalPostId={id}
                   comment={comment.data()}
                 />
               ))}

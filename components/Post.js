@@ -75,7 +75,7 @@ export default function Post({ post, id }) {
       collection(db, "posts", id, "comments"),
       (snapshot) => setComments(snapshot.docs)
     );
-  }, [db, id]);
+  }, [db]);
 
   return (
     <div className="flex p-3 cursor-pointer border-b border-gray-200">
@@ -112,12 +112,16 @@ export default function Post({ post, id }) {
 
         {/* post text */}
 
-        <p className="text-gray=800 text-[0.9375rem] sm:text-[1rem] mb-2">
+        <p
+          onClick={() => router.push(`/posts/${id}`)}
+          className="text-gray=800 text-[0.9375rem] sm:text-[1rem] mb-2"
+        >
           {post?.data()?.text}
         </p>
 
         {/* post image */}
         <img
+          onClick={() => router.push(`/posts/${id}`)}
           className="rounded-2xl mr-2"
           src={
             post?.data()?.image ||
